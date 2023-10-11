@@ -42,7 +42,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 group :production do
 
-  gem 'pg', '~> 0.21' # Heroku deployment
+  gem 'pg', '~> 1.1' # Heroku deployment
 
   gem 'rails_12factor'
 end
