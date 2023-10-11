@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
+    set_movie
   end
 
   # GET /movies/new
@@ -60,7 +61,12 @@ class MoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
+      begin
       @movie = Movie.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        flash[:notice] = "La pelicula con el ID #{params[:id]} no ha sido creado"
+        redirect_to action: 'index' 
+      end
     end
 
     # Only allow a list of trusted parameters through.
